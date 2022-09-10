@@ -43,5 +43,9 @@ Obtain the job array information from HCP
 (e.g."SLURM_ARRAY_TASK_ID") to generate the seed and the output file name.
 }
 \examples{
+Sys.setenv(SLURM_ARRAY_TASK_ID="5",
+           SLURM_ARRAY_TASK_MAX="10",
+           SLURM_ARRAY_TASK_COUNT="8")
+
 out <- jobinfo("fit", seed=2022)
 }

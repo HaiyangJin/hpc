@@ -21,6 +21,10 @@
 #' @export
 #'
 #' @examples
+#' Sys.setenv(SLURM_ARRAY_TASK_ID="5",
+#'            SLURM_ARRAY_TASK_MAX="10",
+#'            SLURM_ARRAY_TASK_COUNT="8")
+#'
 #' out <- jobinfo("fit", seed=2022)
 
 jobinfo <- function(outfn_pre, seed=1234,
