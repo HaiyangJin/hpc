@@ -23,8 +23,10 @@ combine_fit <- function(path=".", pattern, outfn=NULL, ...){
   # read the first rds
   combined_fit <- readRDS(filelist[[1]])
 
-  for (i in 2:length(filelist)) {
-    combined_fit <- brms::combine_models(combined_fit, readRDS(filelist[[i]]))
+  if (length(filelist) > 1) {
+    for (i in 2:length(filelist)) {
+      combined_fit <- brms::combine_models(combined_fit, readRDS(filelist[[i]]))
+    }
   }
 
   # save the combined fit object if outfn is not NULL
