@@ -20,11 +20,13 @@
 combine_fit <- function(path=".", pattern, outfn=NULL, ...){
   # list all files
   filelist <- list.files(path, pattern, full.names=T, ...)
+  N_fit <- length(filelist)
+
   # read the first rds
   combined_fit <- readRDS(filelist[[1]])
 
-  if (length(filelist) > 1) {
-    for (i in 2:length(filelist)) {
+  if (N_fit > 1) {
+    for (i in 2:N_fit) {
       combined_fit <- brms::combine_models(combined_fit, readRDS(filelist[[i]]))
     }
   }
@@ -33,6 +35,8 @@ combine_fit <- function(path=".", pattern, outfn=NULL, ...){
   if (!is.null(outfn)){
     saveRDS(combined_fit, file = outfn)
   }
+
+  message(sprintf("%d files of fitted objects were combined!", N_fit))
 
   return(combined_fit)
 }
