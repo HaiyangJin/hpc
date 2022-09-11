@@ -7,15 +7,15 @@
 combine_fit(path = ".", pattern, outfn = NULL, ...)
 }
 \arguments{
-\item{path}{path to the fit objects; will be use as path in list.files().}
+\item{path}{path to the fit objects; will be use as \code{path} in \code{list.files()}.}
 
 \item{pattern}{wildcard used to identify the single fit objects; will be use
-as pattern in list.files().}
+as \code{pattern} in \code{list.files()}.}
 
 \item{outfn}{the output file name of the combined fit objects. If outfn is
-NULL (default), no file will be saved locally.}
+\code{NULL} (default), no file will be saved locally.}
 
-\item{...}{other arguments to be used in list.files().}
+\item{...}{other arguments to be used in \code{list.files()}.}
 }
 \value{
 a combined fit object.

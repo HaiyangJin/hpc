@@ -2,7 +2,7 @@
 % Please edit documentation in R/jobinfo.R
 \name{jobinfo}
 \alias{jobinfo}
-\title{Use HCP information to generate the seed and output file name}
+\title{Use HPC information to generate the seed and output file name}
 \usage{
 jobinfo(
   outfn_pre,
@@ -18,11 +18,11 @@ jobinfo(
 The second part is the seed to be used.}
 
 \item{seed}{the "default" seed to be used. Default to 1234. The specific seed
-depends on `seedtype`.}
+depends on \code{seedtype}.}
 
-\item{seedtype}{how the seed should be set. Default to "seed+ID", i.e., the
-sum of `seed` and the task ID from HCP. "ID", use the HCP task ID as the seed
- directly. "seed", use the `seed` directly as the seed (note: if multiple
+\item{seedtype}{how the seed should be set. Default to  \strong{"seed+ID"}, i.e., the
+sum of \code{seed} and the task ID from HPC. \strong{"ID"}, use the HPC task ID as the seed
+ directly.  \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
  tasks are submitted simultaneously, the output file name may be the same).}
 
 \item{ID_str}{the name of the system variable for task ID. Default to
@@ -39,7 +39,7 @@ a named list of information (length of 2). "seed" is a numeric value,
 which can be used as the seed. "outfn" is the output file name.
 }
 \description{
-Obtain the job array information from HCP
+Obtain the job array information from HPC
 (e.g."SLURM_ARRAY_TASK_ID") to generate the seed and the output file name.
 }
 \examples{
