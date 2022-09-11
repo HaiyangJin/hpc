@@ -1,12 +1,12 @@
-#' @title Use HCP information to generate the seed and output file name
-#' @description Obtain the job array information from HCP
+#' @title Use HPC information to generate the seed and output file name
+#' @description Obtain the job array information from HPC
 #' (e.g."SLURM_ARRAY_TASK_ID") to generate the seed and the output file name.
 #' @param outfn_pre the first part of the output file name.
 #' The second part is the seed to be used.
 #' @param seed the "default" seed to be used. Default to 1234. The specific seed
 #' depends on `seedtype`.
 #' @param seedtype how the seed should be set. Default to "seed+ID", i.e., the
-#' sum of `seed` and the task ID from HCP. "ID", use the HCP task ID as the seed
+#' sum of `seed` and the task ID from HPC. "ID", use the HPC task ID as the seed
 #'  directly. "seed", use the `seed` directly as the seed (note: if multiple
 #'  tasks are submitted simultaneously, the output file name may be the same).
 #' @param ID_str the name of the system variable for task ID. Default to
