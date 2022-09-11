@@ -34,7 +34,7 @@ jobinfo <- function(outfn_pre, seed=1234,
                       N_str="SLURM_ARRAY_TASK_COUNT"){
   # get the job array task ID
   ID <- as.integer(Sys.getenv(ID_str))
-  message(sprintf("Job array ID: %d", ID))
+  message(sprintf("\nJob array ID: %d", ID))
 
   if (seedtype=="seed+ID") {
     thisseed <- ID + seed
@@ -54,7 +54,7 @@ jobinfo <- function(outfn_pre, seed=1234,
   # output file name
   maxstr <- sprintf('%d', floor(log(maxseed, 10))+1)
   outfn <- sprintf(paste0('%s_%0', maxstr, 'd.rds'), outfn_pre, thisseed)
-  message(sprintf('The output file name is "%s".', outfn))
+  message(sprintf('The output file name is "%s".\n', outfn))
 
   out <- list(seed = thisseed,
               outfn = outfn)
