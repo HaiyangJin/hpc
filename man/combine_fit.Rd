@@ -4,7 +4,7 @@
 \alias{combine_fit}
 \title{Combine multiple files of fit objects}
 \usage{
-combine_fit(path = ".", pattern, outfn = NULL, ...)
+combine_fit(path = ".", pattern, outfn = NULL, bs = FALSE, ...)
 }
 \arguments{
 \item{path}{path to the fit objects; will be use as \code{path} in \code{list.files()}.}
@@ -15,7 +15,9 @@ as \code{pattern} in \code{list.files()}.}
 \item{outfn}{the output file name of the combined fit objects. If outfn is
 \code{NULL} (default), no file will be saved locally.}
 
-\item{...}{other arguments to be used in \code{list.files()}.}
+\item{bs}{whether perform bridge sampling and save the result. Default to FALSE.}
+
+\item{...}{other arguments to be used in \code{brms::bridge_sampler}.}
 }
 \value{
 a combined fit object.
@@ -26,5 +28,6 @@ combine the fit objects saved in separate files.
 \examples{
 \dontrun{
 combine_fit("brmfit*", outfn="combined_brmfit")
+combine_fit("brmfit*", outfn="combined_brmfit", bs=TRUE)
 }
 }
