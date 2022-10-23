@@ -8,9 +8,9 @@ jobinfo(
   outfn_pre,
   seed = 1234,
   seedtype = "seed+ID",
-  ID_str = "SLURM_ARRAY_TASK_ID",
-  MAX_str = "SLURM_ARRAY_TASK_MAX",
-  N_str = "SLURM_ARRAY_TASK_COUNT"
+  ID_env = "SLURM_ARRAY_TASK_ID",
+  MAX_env = "SLURM_ARRAY_TASK_MAX",
+  N_env = "SLURM_ARRAY_TASK_COUNT"
 )
 }
 \arguments{
@@ -25,13 +25,13 @@ sum of \code{seed} and the task ID from HPC. \strong{"ID"}, use the HPC task ID 
  directly.  \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
  tasks are submitted simultaneously, the output file name may be the same).}
 
-\item{ID_str}{the name of the system variable for task ID. Default to
+\item{ID_env}{the name of the system variable for task ID. Default to
 "SLURM_ARRAY_TASK_ID".}
 
-\item{MAX_str}{the name of the system variable for maximum task ID. Default
+\item{MAX_env}{the name of the system variable for maximum task ID. Default
 to "SLURM_ARRAY_TASK_MAX".}
 
-\item{N_str}{the name of the system variable for the number of tasks. Default
+\item{N_env}{the name of the system variable for the number of tasks. Default
 to "SLURM_ARRAY_TASK_COUNT".}
 }
 \value{

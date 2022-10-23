@@ -10,7 +10,6 @@
 #'
 #' @return a combined fit object.
 #' @export
-#' @importFrom brms
 #'
 #' @examples
 #'\dontrun{

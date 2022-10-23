@@ -9,11 +9,11 @@
 #' sum of \code{seed} and the task ID from HPC. \strong{"ID"}, use the HPC task ID as the seed
 #'  directly.  \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
 #'  tasks are submitted simultaneously, the output file name may be the same).
-#' @param ID_str the name of the system variable for task ID. Default to
+#' @param ID_env the name of the system variable for task ID. Default to
 #' "SLURM_ARRAY_TASK_ID".
-#' @param MAX_str the name of the system variable for maximum task ID. Default
+#' @param MAX_env the name of the system variable for maximum task ID. Default
 #' to "SLURM_ARRAY_TASK_MAX".
-#' @param N_str the name of the system variable for the number of tasks. Default
+#' @param N_env the name of the system variable for the number of tasks. Default
 #' to "SLURM_ARRAY_TASK_COUNT".
 #'
 #' @return a named list of information (length of 2). "seed" is a numeric value,
@@ -28,22 +28,25 @@
 #' out <- jobinfo("fit", seed=2022)
 
 jobinfo <- function(outfn_pre, seed=1234,
-                      seedtype = "seed+ID",
-                      ID_str="SLURM_ARRAY_TASK_ID",
-                      MAX_str="SLURM_ARRAY_TASK_MAX",
-                      N_str="SLURM_ARRAY_TASK_COUNT"){
+                    seedtype = "seed+ID",
+                    ID_env="SLURM_ARRAY_TASK_ID",
+                    MAX_env="SLURM_ARRAY_TASK_MAX",
+                    N_env="SLURM_ARRAY_TASK_COUNT"){
+  # obtain the array information
+  ainfo <- arrayinfo(ID_env=ID_env, N_env=N_env, MAX_env=MAX_env)
+
   # get the job array task ID
-  ID <- as.integer(Sys.getenv(ID_str))
+  ID <- ainfo$ID
   message(sprintf("\nJob array ID: %d", ID))
 
   if (seedtype=="seed+ID") {
     thisseed <- ID + seed
-    maxseed <- as.integer(Sys.getenv(MAX_str))+seed
+    maxseed <- ainfo$MAX+seed
   } else if (seedtype=="ID") {
     thisseed <- ID
-    maxseed <- as.integer(Sys.getenv(MAX_str))
+    maxseed <- ainfo$MAX
   } else if (seedtype=="seed") {
-    if (as.integer(Sys.getenv(N_str))>1){
+    if (ainfo$N>1){
       warning("Multiple jobs are submitted and the results may be overwriten.")
     }
     thisseed <- seed
