@@ -34,7 +34,7 @@ the corresponding information.
 }
 \description{
 Obtain job ID and array information in HPC (with SLURM, more see
-[here](https://slurm.schedmd.com/job_array.html)).
+\href{https://slurm.schedmd.com/job_array.html}{here}).
 }
 \examples{
 Sys.setenv("SLURM_ARRAY_TASK_ID"="123")

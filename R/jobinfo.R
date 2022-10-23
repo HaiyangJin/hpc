@@ -4,10 +4,10 @@
 #' @param outfn_pre the first part of the output file name.
 #' The second part is the seed to be used.
 #' @param seed the "default" seed to be used. Default to 1234. The specific seed
-#' depends on \code{seedtype}.
-#' @param seedtype how the seed should be set. Default to  \strong{"seed+ID"}, i.e., the
-#' sum of \code{seed} and the task ID from HPC. \strong{"ID"}, use the HPC task ID as the seed
-#'  directly.  \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
+#' depends on **seedtype**.
+#' @param seedtype how the seed should be set. Default to  **"seed+ID"**, i.e., the
+#' sum of `seed` and the task ID from HPC. **"ID"**, use the HPC task ID as the seed
+#'  directly. **"seed"**, use the `seed` directly as the seed (note: if multiple
 #'  tasks are submitted simultaneously, the output file name may be the same).
 #' @param ID_env the name of the system variable for task ID. Default to
 #' "SLURM_ARRAY_TASK_ID".

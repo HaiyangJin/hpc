@@ -18,12 +18,12 @@ jobinfo(
 The second part is the seed to be used.}
 
 \item{seed}{the "default" seed to be used. Default to 1234. The specific seed
-depends on \code{seedtype}.}
+depends on \strong{seedtype}.}
 
 \item{seedtype}{how the seed should be set. Default to  \strong{"seed+ID"}, i.e., the
 sum of \code{seed} and the task ID from HPC. \strong{"ID"}, use the HPC task ID as the seed
- directly.  \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
- tasks are submitted simultaneously, the output file name may be the same).}
+directly. \strong{"seed"}, use the \code{seed} directly as the seed (note: if multiple
+tasks are submitted simultaneously, the output file name may be the same).}
 
 \item{ID_env}{the name of the system variable for task ID. Default to
 "SLURM_ARRAY_TASK_ID".}
